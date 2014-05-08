@@ -1,6 +1,19 @@
 require 'spec_helper'
 
-describe Restaurant do
-	subject(:restaurant) { FactoryGirl.build(:restaurant, name: nil)}
-	it {expect(restaurant.valid?).to be_false}
+describe RestaurantsController do
+	context "Get /restaurants/:id" do
+		before do
+			@restaurant = FactoryGirl.create :restaurant
+		end
+
+		context "resource exists" do
+			subject {get "restaurants/#{@restaurant.id}"}
+			it { expect(subject).to render_template(:show)}
+		end
+
+		context "resource doesn't exist" do
+			subject {get "restaurants/#{@restaurant.id + 1}"}
+			it { expect(subject).to redirect_to(:root)}
+		end
+	end
 end
