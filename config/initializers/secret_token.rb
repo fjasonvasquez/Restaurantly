@@ -1,0 +1,1 @@
+Restaurantly::Application.config.secret_key_base = '30ebb4d19f3b8e56fec00c3ab22123872adfe1f29c042051983a03d58da012d08b8605a2b50db9c0c8db27e3cb56614bc205c0dad30efb69ebe26be8a45c707c' # replace this
