@@ -31,3 +31,33 @@ describe "visit '/'" do
 		end
 	end
 end
+
+describe "edit links work" do
+	context "works", :driver => :selenium do
+		it "properly" do
+			visit '/restaurants/new'
+			fill_in 'restaurant_name', with: "mc ruby"
+			click_button 'submit!'
+			visit '/'
+			click_link 'edit'
+			fill_in 'restaurant_name', with: "mc rails"
+			click_button 'update'
+			expect(page).to have_content 'mc rails'
+		end
+	end
+end
+
+describe "destroy" do
+	context "works", :driver => :selenium do
+		it "properly" do
+			visit '/restaurants/new'
+			fill_in 'restaurant_name', with: "mc ruby"
+			click_button 'submit!'
+			visit '/'
+			click_link 'edit'
+			fill_in 'restaurant_name', with: "mc rails"
+			click_button 'update'
+			expect(page).to have_content 'mc rails'
+		end
+	end
+end
